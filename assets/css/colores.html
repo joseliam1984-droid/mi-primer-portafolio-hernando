@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a Colores Tailwind CSS</title>
+    <!-- Importamos Tailwind CSS vía CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Inter para que se vea igual a la documentación -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Animación suave para el copiado */
+        .copied-toast {
+            animation: fadeInOut 2s ease-in-out forwards;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(10px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+    </style>
+    <script>
+        // Configuración simple para simular el comportamiento
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Aquí podríamos extender colores si quisiéramos
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-900 antialiased selection:bg-sky-500 selection:text-white pb-20">
+
+    <!-- Contenedor Principal -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        
+        <!-- Encabezado -->
+        <div class="max-w-3xl mb-12">
+            <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Personalización de Colores
+            </h1>
+            <p class="text-lg text-slate-600">
+                Tailwind incluye una paleta de colores elaborada por expertos y lista para usar, perfecta para prototipos o producción.
+            </p>
+        </div>
+
+        <!-- Explicación de la Escala -->
+        <div class="bg-slate-50 rounded-xl p-6 mb-12 border border-slate-200">
+            <h2 class="text-lg font-semibold text-slate-900 mb-2">¿Cómo funciona la escala?</h2>
+            <p class="text-slate-600 text-sm mb-4">
+                Cada color tiene una escala numérica del <span class="font-mono font-bold text-slate-800">50</span> al <span class="font-mono font-bold text-slate-800">950</span>.
+            </p>
+            <ul class="list-disc list-inside text-sm text-slate-600 space-y-1 ml-2">
+                <li><strong>50-100:</strong> Tonos muy claros, ideales para fondos (backgrounds).</li>
+                <li><strong>400-600:</strong> Tonos medios, ideales para botones, bordes o iconos.</li>
+                <li><strong>700-950:</strong> Tonos oscuros, ideales para texto (para asegurar buen contraste).</li>
+            </ul>
+        </div>
+
+          <!-- Encabezados de números (Sticky) -->
+            <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 mb-2 sticky top-0 bg-white/90 backdrop-blur z-10 py-2 border-b border-slate-100">
+                <div class="w-20 sm:w-24"></div> <!-- Espacio para el nombre -->
+                <div class="grid grid-cols-11 gap-1.5 text-center text-xs font-mono font-medium text-slate-500">
+                    <div>50</div>
+                    <div>100</div>
+                    <div>200</div>
+                    <div>300</div>
+                    <div>400</div>
+                    <div>500</div>
+                    <div>600</div>
+                    <div>700</div>
+                    <div>800</div>
+                    <div>900</div>
+                    <div>950</div>
+                </div>
+            </div>
+            
+
+                 <!-- SECCIÓN 1: NEUTROS -->
+            <div class="mb-8">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Tonos Neutros</h3>
+                
+                <!-- Slate -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Slate</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-slate-${num} cursor-pointer hover:scale-110 transition-transform ring-1 ring-inset ring-black/5" title="bg-slate-${num}" onclick="copyClass('slate-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Gray -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Gray</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-gray-${num} cursor-pointer hover:scale-110 transition-transform ring-1 ring-inset ring-black/5" title="bg-gray-${num}" onclick="copyClass('gray-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Zinc -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Zinc</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-zinc-${num} cursor-pointer hover:scale-110 transition-transform ring-1 ring-inset ring-black/5" title="bg-zinc-${num}" onclick="copyClass('zinc-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Neutral -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Neutral</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-neutral-${num} cursor-pointer hover:scale-110 transition-transform ring-1 ring-inset ring-black/5" title="bg-neutral-${num}" onclick="copyClass('neutral-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Stone -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Stone</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-stone-${num} cursor-pointer hover:scale-110 transition-transform ring-1 ring-inset ring-black/5" title="bg-stone-${num}" onclick="copyClass('stone-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: COLORES -->
+            <div class="mb-8">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Espectro de Color</h3>
+
+                <!-- Red -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Red</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-red-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-red-${num}" onclick="copyClass('red-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Orange -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Orange</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-orange-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-orange-${num}" onclick="copyClass('orange-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Amber -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Amber</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-amber-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-amber-${num}" onclick="copyClass('amber-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Yellow -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Yellow</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-yellow-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-yellow-${num}" onclick="copyClass('yellow-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Lime -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Lime</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-lime-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-lime-${num}" onclick="copyClass('lime-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Green -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Green</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-green-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-green-${num}" onclick="copyClass('green-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Emerald -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Emerald</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-emerald-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-emerald-${num}" onclick="copyClass('emerald-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Teal -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Teal</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-teal-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-teal-${num}" onclick="copyClass('teal-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Cyan -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Cyan</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-cyan-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-cyan-${num}" onclick="copyClass('cyan-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Sky -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Sky</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-sky-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-sky-${num}" onclick="copyClass('sky-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Blue -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Blue</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-blue-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-blue-${num}" onclick="copyClass('blue-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Indigo -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Indigo</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-indigo-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-indigo-${num}" onclick="copyClass('indigo-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Violet -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Violet</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-violet-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-violet-${num}" onclick="copyClass('violet-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Purple -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Purple</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-purple-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-purple-${num}" onclick="copyClass('purple-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Fuchsia -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Fuchsia</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-fuchsia-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-fuchsia-${num}" onclick="copyClass('fuchsia-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Pink -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Pink</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-pink-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-pink-${num}" onclick="copyClass('pink-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+                <!-- Rose -->
+                <div class="grid grid-cols-[auto_minmax(0,_1fr)] gap-4 items-center mb-3 color-row">
+                    <div class="w-16 sm:w-24 text-sm font-semibold text-slate-500 color-name">Rose</div>
+                    <div class="grid grid-cols-11 gap-1 sm:gap-2">
+                        <script>
+                            ['50','100','200','300','400','500','600','700','800','900','950'].forEach(num => {
+                                document.write(`<div class="aspect-square w-full rounded-md bg-rose-${num} cursor-pointer hover:scale-110 transition-transform" title="bg-rose-${num}" onclick="copyClass('rose-${num}')"></div>`)
+                            })
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+
+        <div class="mt-8 text-center text-sm text-slate-500">
+            <p>Haz clic en cualquier cuadro de color para copiar su clase (ej: <code class="text-sky-600">bg-blue-500</code>)</p>
+        </div>
+
+        <!-- Sección de Ejemplo de Uso -->
+        <div class="mt-16 border-t border-slate-200 pt-10">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Cómo usar los colores</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Ejemplo 1: Fondo -->
+                <div class="space-y-3">
+                    <h3 class="font-semibold text-slate-700">1. Fondo (Background)</h3>
+                    <div class="bg-blue-500 text-white p-4 rounded-lg text-center shadow-lg">
+                        Soy azul (bg-blue-500)
+                    </div>
+                    <code class="block bg-slate-100 p-2 rounded text-xs text-slate-600 font-mono">class="bg-blue-500 text-white"</code>
+                </div>
+
+                <!-- Ejemplo 2: Texto -->
+                <div class="space-y-3">
+                    <h3 class="font-semibold text-slate-700">2. Texto (Text)</h3>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg text-center">
+                        <span class="text-emerald-600 font-bold text-xl">Texto Esmeralda</span>
+                    </div>
+                    <code class="block bg-slate-100 p-2 rounded text-xs text-slate-600 font-mono">class="text-emerald-600"</code>
+                </div>
+
+                <!-- Ejemplo 3: Borde -->
+                <div class="space-y-3">
+                    <h3 class="font-semibold text-slate-700">3. Borde (Border)</h3>
+                    <div class="bg-white border-4 border-rose-500 p-4 rounded-lg text-center text-rose-500 font-medium">
+                        Borde Rosa
+                    </div>
+                    <code class="block bg-slate-100 p-2 rounded text-xs text-slate-600 font-mono">class="border-4 border-rose-500"</code>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Notificación flotante al copiar -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium hidden">
+        Copiado: <span id="toast-text" class="text-sky-400"></span>
+    </div>
+
+    <script>
+        function copyClass(className) {
+            // Copiar al portapapeles
+            navigator.clipboard.writeText(className);
+            
+            // Mostrar notificación
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            
+            toastText.innerText = className;
+            toast.classList.remove('hidden');
+            toast.classList.add('copied-toast');
+
+            // Ocultar después de la animación
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('copied-toast');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
