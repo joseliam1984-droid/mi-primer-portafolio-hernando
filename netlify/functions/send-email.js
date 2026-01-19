@@ -1,27 +1,27 @@
-const { Resend } = require('resend');
+const { Resend } = require("resend");
 
 exports.handler = async (event, context) => {
   // Solo permitir POST requests
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: 'Método no permitido' })
+      body: JSON.stringify({ error: "Método no permitido" }),
     };
   }
 
   // Habilitar CORS
   const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json'
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Content-Type": "application/json",
   };
 
   // Manejar preflight requests
-  if (event.httpMethod === 'OPTIONS') {
+  if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
       headers,
-      body: ''
+      body: "",
     };
   }
 
@@ -35,9 +35,9 @@ exports.handler = async (event, context) => {
       return {
         statusCode: 400,
         headers,
-        body: JSON.stringify({ 
-          error: 'Todos los campos son obligatorios' 
-        })
+        body: JSON.stringify({
+          error: "Todos los campos son obligatorios",
+        }),
       };
     }
 
@@ -46,8 +46,8 @@ exports.handler = async (event, context) => {
 
     // Enviar el email
     const emailData = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'tu@gmail.com',
+      from: "onboarding@resend.dev",
+      to: "joseliam1984@gmail.com",
       subject: `Nuevo mensaje de contacto de ${name}`,
       html: `
         <!DOCTYPE html>
@@ -131,38 +131,37 @@ exports.handler = async (event, context) => {
             
             <div class="field">
               <div class="label">💬 Mensaje:</div>
-              <div class="value">${message.replace(/\n/g, '<br>')}</div>
+              <div class="value">${message.replace(/\n/g, "<br>")}</div>
             </div>
             
             <div class="footer">
               <p>Este mensaje fue enviado desde tu portafolio web</p>
-              <p>Fecha: ${new Date().toLocaleString('es-ES')}</p>
+              <p>Fecha: ${new Date().toLocaleString("es-ES")}</p>
             </div>
           </div>
         </body>
         </html>
-      `
+      `,
     });
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         success: true,
-        message: 'Email enviado correctamente',
-        id: emailData.id
-      })
+        message: "Email enviado correctamente",
+        id: emailData.id,
+      }),
     };
-
   } catch (error) {
-    console.error('Error al enviar email:', error);
+    console.error("Error al enviar email:", error);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ 
-        error: 'Error al enviar el email',
-        details: error.message 
-      })
+      body: JSON.stringify({
+        error: "Error al enviar el email",
+        details: error.message,
+      }),
     };
   }
 };
